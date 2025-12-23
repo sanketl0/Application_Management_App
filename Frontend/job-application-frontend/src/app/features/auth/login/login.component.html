@@ -1,0 +1,180 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <!-- Enhanced Header with Logo -->
+    <mat-card-header class="login-header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <mat-icon>person_search</mat-icon>
+        </div>
+        <div class="logo-text">
+          <h1>TalentFlow</h1>
+          <p>Recruiter Dashboard</p>
+        </div>
+      </div>
+      <mat-card-title class="login-title">Welcome Back</mat-card-title>
+      <mat-card-subtitle class="login-subtitle">
+        Sign in to manage job applications and candidate pipelines
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <!-- Username with enhanced styling -->
+        <mat-form-field appearance="fill" class="full-width input-field">
+          <mat-label>
+            <mat-icon class="input-icon">person_outline</mat-icon>
+            Username
+          </mat-label>
+          <input
+            matInput
+            formControlName="username"
+            placeholder="Enter your username"
+            autocomplete="username"
+          />
+          <mat-error *ngIf="username?.hasError('required')">
+            <mat-icon>error_outline</mat-icon>
+            Username is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password with enhanced styling -->
+        <mat-form-field appearance="fill" class="full-width input-field">
+          <mat-label>
+            <mat-icon class="input-icon">lock_outline</mat-icon>
+            Password
+          </mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hidePassword = !hidePassword"
+            aria-label="Toggle password visibility"
+            class="visibility-toggle"
+            [disabled]="loading"
+          >
+            <mat-icon>
+              {{ hidePassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+
+          <mat-error *ngIf="password?.hasError('required')">
+            <mat-icon>error_outline</mat-icon>
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="password?.hasError('minlength')">
+            <mat-icon>error_outline</mat-icon>
+            Password must be at least 2 characters
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Remember me & Forgot password -->
+        <div class="login-options">
+          <mat-checkbox formControlName="rememberMe" color="primary" [disabled]="loading">
+            Remember me
+          </mat-checkbox>
+          <a class="forgot-password" [routerLink]="['/forgot-password']" tabindex="-1">
+            Forgot password?
+          </a>
+        </div>
+
+        <!-- Enhanced Login Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          class="full-width login-button"
+          type="submit"
+          [disabled]="loginForm.invalid || loading"
+        >
+          <span *ngIf="!loading">Sign In</span>
+          <span *ngIf="loading" class="loading-content">
+            <mat-spinner diameter="20" class="button-spinner"></mat-spinner>
+            Signing In...
+          </span>
+        </button>
+
+        <!-- Divider -->
+        <!-- <div class="divider">
+          <span>or continue with</span>
+        </div> -->
+
+        <!-- Social Login Options -->
+        <!-- <div class="social-login">
+          <button 
+            mat-stroked-button 
+            type="button" 
+            class="social-btn google"
+            (click)="onSocialLogin('Google')"
+            [disabled]="loading"
+          >
+            <img src="https://www.google.com/favicon.ico" alt="Google">
+            Google
+          </button>
+          <button 
+            mat-stroked-button 
+            type="button" 
+            class="social-btn linkedin"
+            (click)="onSocialLogin('LinkedIn')"
+            [disabled]="loading"
+          >
+            <img src="https://static.licdn.com/sc/h/5bukxbhy9siusm24vji4c4j9o" alt="LinkedIn">
+            LinkedIn
+          </button>
+        </div> -->
+      </form>
+    </mat-card-content>
+
+    <!-- Footer with signup link -->
+    <mat-card-footer class="login-footer">
+      <p>New to TalentFlow? <a [routerLink]="['/signup']" tabindex="-1">Create an account</a></p>
+      <div class="security-info">
+        <mat-icon>security</mat-icon>
+        <span>Your data is secured with 256-bit SSL encryption</span>
+      </div>
+    </mat-card-footer>
+
+    <!-- Animated background elements -->
+    <div class="floating-elements">
+      <div class="floating-element element-1"></div>
+      <div class="floating-element element-2"></div>
+      <div class="floating-element element-3"></div>
+      <div class="floating-element element-4"></div>
+    </div>
+  </mat-card>
+
+  <!-- Welcome message side panel (desktop only) -->
+  <div class="welcome-panel">
+    <div class="welcome-content">
+      <h2>Streamline Your Hiring Process</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <mat-icon>check_circle</mat-icon>
+          <span>Manage unlimited job postings</span>
+        </div>
+        <div class="feature">
+          <mat-icon>check_circle</mat-icon>
+          <span>Track candidate applications</span>
+        </div>
+        <div class="feature">
+          <mat-icon>check_circle</mat-icon>
+          <span>Schedule interviews effortlessly</span>
+        </div>
+        <div class="feature">
+          <mat-icon>check_circle</mat-icon>
+          <span>Analytics & reporting dashboard</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"TalentFlow reduced our hiring time by 40%"</p>
+        <span>- Sarah Johnson, HR Director</span>
+      </div>
+    </div>
+  </div>
+</div>

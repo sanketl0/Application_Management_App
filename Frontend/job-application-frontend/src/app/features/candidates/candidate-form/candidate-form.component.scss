@@ -1,0 +1,76 @@
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 20px 24px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 20px;
+  font-weight: 500;
+  
+  mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px !important;
+  min-width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.candidate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  
+  button {
+    margin-left: 8px;
+    
+    &[mat-raised-button] {
+      mat-icon {
+        margin-right: 8px;
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 600px) {
+  mat-dialog-content {
+    min-width: unset;
+    width: 100%;
+    padding: 16px !important;
+  }
+  
+  h2[mat-dialog-title] {
+    font-size: 18px;
+    padding: 16px;
+  }
+  
+  mat-dialog-actions {
+    flex-direction: column-reverse;
+    
+    button {
+      width: 100%;
+      margin: 4px 0;
+    }
+  }
+}

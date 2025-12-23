@@ -1,0 +1,67 @@
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 20px 24px;
+  background-color: #fff3e0;
+  border-bottom: 1px solid #ffe0b2;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e65100;
+  
+  .warning-icon {
+    color: #ff9800;
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px !important;
+  min-width: 350px;
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+  }
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  
+  button {
+    margin-left: 8px;
+    
+    &[mat-raised-button] {
+      mat-icon {
+        margin-right: 8px;
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 600px) {
+  mat-dialog-content {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  mat-dialog-actions {
+    flex-direction: column-reverse;
+    
+    button {
+      width: 100%;
+      margin: 4px 0;
+    }
+  }
+}

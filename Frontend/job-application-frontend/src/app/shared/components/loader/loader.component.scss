@@ -1,0 +1,322 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.95) 0%, rgba(49, 27, 146, 0.95) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.loader-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.loader-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 40px rgba(255, 255, 255, 0.5);
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.loader-main {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 50%;
+  animation: pulse 2s ease-out infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(118, 75, 162, 0.2);
+    border-radius: 50%;
+    animation: pulse 2s ease-out infinite 0.5s;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.loader-logo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  z-index: 2;
+}
+
+.logo-svg {
+  width: 50px;
+  height: 50px;
+  fill: white;
+}
+
+.logo-path {
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.loader-spinner {
+  position: absolute;
+  z-index: 3;
+  
+  ::ng-deep .mat-progress-spinner circle {
+    stroke: url(#gradient);
+  }
+}
+
+.loader-text {
+  text-align: center;
+  margin-top: 20px;
+  
+  h3 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a237e;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+  }
+}
+
+.progress-indicator {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+  animation: progressAnimation 2s ease-in-out infinite;
+}
+
+@keyframes progressAnimation {
+  0% { 
+    width: 0%;
+    margin-left: 0%;
+  }
+  50% { 
+    width: 30%;
+    margin-left: 35%;
+  }
+  100% { 
+    width: 0%;
+    margin-left: 100%;
+  }
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+  animation: textFade 3s ease-in-out infinite;
+}
+
+@keyframes textFade {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.loader-tips {
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  animation: tipSlide 0.5s ease-out;
+  animation-fill-mode: both;
+  
+  &:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  mat-icon {
+    color: #667eea;
+    flex-shrink: 0;
+  }
+  
+  span {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+  }
+}
+
+@keyframes tipSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Add gradient definition for spinner */
+svg.defs-only {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .loader-content {
+    padding: 30px 20px;
+    width: 85%;
+  }
+  
+  .loader-main {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .loader-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .logo-svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .loader-text {
+    h3 {
+      font-size: 20px;
+    }
+    
+    p {
+      font-size: 14px;
+    }
+  }
+  
+  .loader-tips {
+    .tip-item span {
+      font-size: 13px;
+    }
+  }
+}
+
+/* Optional: Add exit animation */
+.loader-overlay.ng-leave {
+  animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

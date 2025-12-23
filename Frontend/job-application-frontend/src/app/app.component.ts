@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, LoaderComponent],
+  template: `
+    <router-outlet></router-outlet>
+    <app-loader></app-loader>
+  `,
+  styles: []
+})
+export class AppComponent {
+  title = 'Job Application Management System';
+}

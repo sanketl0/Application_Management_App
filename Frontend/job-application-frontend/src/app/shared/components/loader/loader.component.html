@@ -1,0 +1,60 @@
+<div class="loader-overlay" *ngIf="loaderService.loading$ | async">
+  <div class="loader-content">
+    <!-- Animated gradient background -->
+    <div class="loader-background"></div>
+    
+    <!-- Main loader -->
+    <div class="loader-main">
+      <!-- Pulsing outer ring -->
+      <div class="pulse-ring"></div>
+      
+      <!-- Logo or icon -->
+      <div class="loader-logo">
+        <svg viewBox="0 0 100 100" class="logo-svg">
+          <path d="M50 15 L65 40 L85 45 L70 65 L75 85 L50 75 L25 85 L30 65 L15 45 L35 40 Z" 
+                class="logo-path"/>
+        </svg>
+      </div>
+      
+      <!-- Spinner -->
+      <div class="loader-spinner">
+        <mat-spinner diameter="60" strokeWidth="4"></mat-spinner>
+      </div>
+    </div>
+    
+    <!-- Loading text -->
+    <div class="loader-text">
+      <h3>Processing Your Request</h3>
+      <p>Please wait while we prepare your dashboard...</p>
+    </div>
+    
+    <!-- Progress indicator -->
+    <div class="progress-indicator">
+      <div class="progress-track">
+        <div class="progress-bar"></div>
+      </div>
+      <span class="progress-text">Loading modules</span>
+    </div>
+    
+    <!-- Tips section -->
+    <div class="loader-tips">
+      <div class="tip-item">
+        <mat-icon>lightbulb</mat-icon>
+        <span>Did you know? You can filter candidates by multiple criteria</span>
+      </div>
+      <div class="tip-item">
+        <mat-icon>lightbulb</mat-icon>
+        <span>New feature: Automated interview scheduling is now available</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<svg class="defs-only">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
